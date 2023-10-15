@@ -8,7 +8,7 @@ namespace=$2
 echo "service is $service"
 echo "namespace is $namespace"
 
-
+version="VERSION"
 k8sdir="k8s"
 if [ ! -d "$k8sdir" ]; then
   mkdir ${k8sdir} || exit 1
@@ -140,7 +140,7 @@ spec:
     spec:
       containers:
         - name: webhook
-          image: xmarlem/poc-admicon:v0.1.5
+          image: xmarlem/poc-admicon:$(cat $version)
           imagePullPolicy: Always
           volumeMounts:
             - name: webhook-certs
